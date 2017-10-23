@@ -1,0 +1,38 @@
+<!-- The content below is only a placeholder and can be replaced.
+
+<mat-card class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div style="text-align:center">
+        <h1>
+          Welcome to:
+        </h1>
+        <img width="300" [src]="imagePath">
+      </div>
+    </div>
+  </div>
+    
+  <div class="row">
+    <div class="col-4 offset-4">
+      <mat-form-field>
+        <mat-select [(ngModel)]="countySelection" (ngModelChange)="goToCounty($event)">
+          <mat-option 
+            *ngFor="let county of this.counties"
+            [value]="county"
+            >
+            {{county}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</mat-card>
+
+{{countySelection}} -->
+
+<div *ngIf="spot | async as p">
+    <h2>{{ p.name }}</h2>
+    <h4>Votes: {{ p.favorite }}</h4>
+    <button (click)="toggle()">Favorite</button>
+    <button (click)="resetSpot()">Reset</button>
+  </div>
