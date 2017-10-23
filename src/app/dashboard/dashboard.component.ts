@@ -7,11 +7,11 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { Spot } from '../models/spot.model';
+import { Spots } from '../models/spot.model';
 import * as SpotActions from '../actions/spot.actions';
 
 interface AppState {
-  spot: Spot;
+  spot: Spots;
 }
 
 @Component({
@@ -26,11 +26,11 @@ export class DashboardComponent implements OnInit {
 
   // spots$: Observable<Spot[]>;
 
-  spot: Observable<Spot>;
+  spot: Observable<Spots>;
 
   constructor(
-    private store: Store<AppState>
-    // private service: ForecastServiceService, private router: Router
+    private store: Store<AppState>,
+    private service: ForecastServiceService, private router: Router
   ) {
     this.spot = this.store.select('spot');
     console.log(this.spot);
@@ -50,12 +50,13 @@ export class DashboardComponent implements OnInit {
     //   }
     // );
 
-    // this.loadSpots();
+    this.loadSpots();
   }
 
-  // loadSpots() {
-  //   this.store.dispatch(this.store.loadSpots());
-  // }
+  loadSpots() {
+    this.store.dispatch(new SpotActions.LoadSpotsAction(1));
+    // this.service.loadSpots();
+  }
 
   goToCounty(county: any) {
     console.log(county)
@@ -65,11 +66,11 @@ export class DashboardComponent implements OnInit {
   }
 
   toggle() {
-    this.store.dispatch(new SpotActions.ToggleFavorite())
+    this.store.dispatch(new SpotActions.ToggleFavorite({}))
   }
 
   resetSpot() {
-    this.store.dispatch(new SpotActions.Reset())
+    this.store.dispatch(new SpotActions.Reset({}))
   }
 
 }

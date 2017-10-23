@@ -13,15 +13,15 @@ export class CountyComponent implements OnInit {
   constructor(private route: ActivatedRoute, private service: ForecastServiceService) { }
 
     ngOnInit() {
-      const countyName = this.route.params['_value'].name;
-      console.log(countyName);
-      if (countyName) {
-        this.service.getSpots(countyName)
-        .subscribe(data => {
-          console.log(data);
-          this.spots = data;
-        });
-      }
+      // const countyName = this.route.params['_value'].name;
+      // console.log(countyName);
+      // if (countyName) {
+      //   this.service.getSpots(countyName)
+      //   .subscribe(data => {
+      //     console.log(data);
+      //     this.spots = data;
+      //   });
+      // }
     }
 
 }

@@ -1,16 +1,16 @@
-// import { SpotEffects } from './effects/spotEffects';
+import { SpotEffects } from './effects/spot.effects';
 // import { SpotActions } from './actions/spotAction';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-// import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { MatCardModule, MatSelectModule, MatFormFieldModule, MatTableModule } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
-// import { EffectsModule } from '@ngrx/effects';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -37,6 +37,7 @@ import { ForecastServiceService } from './../services/forecast-service.service';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    JsonpModule,
     // HttpModule,
     HttpClientModule,
     RouterModule,
@@ -50,8 +51,8 @@ import { ForecastServiceService } from './../services/forecast-service.service';
     StoreModule.forRoot({ spot: spotReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 10 // number of states to retain
-    })
-    // EffectsModule.forRoot([SpotEffects]),
+    }),
+    EffectsModule.forRoot([SpotEffects]),
   ],
   providers: [ForecastServiceService],
   bootstrap: [AppComponent]

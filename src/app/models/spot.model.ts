@@ -1,5 +1,5 @@
-export interface Spot {
-    id: string;
-    name: string;
-    favorite: boolean;
+export interface Spots {
+    loaded: boolean;
+    loading: boolean;
+    entities: Array<any>;
   }

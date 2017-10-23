@@ -31,8 +31,9 @@
 {{countySelection}} -->
 
 <div *ngIf="spot | async as p">
-    <h2>{{ p.name }}</h2>
+  {{p.entities | json}}
+    <!-- <h2>{{ p.name }}</h2>
     <h4>Votes: {{ p.favorite }}</h4>
     <button (click)="toggle()">Favorite</button>
-    <button (click)="resetSpot()">Reset</button>
+    <button (click)="resetSpot()">Reset</button> -->
   </div>
