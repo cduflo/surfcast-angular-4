@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardModule, MatSelectModule, MatFormFieldModule, MatTableModule, MatGridListModule } from '@angular/material';
+import {RouterTestingModule} from '@angular/router/testing'
 
 import { SpotComponent } from './spot.component';
 
@@ -8,6 +10,14 @@ describe('SpotComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        MatCardModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatTableModule,
+        MatGridListModule,
+        RouterTestingModule
+      ],
       declarations: [ SpotComponent ]
     })
     .compileComponents();

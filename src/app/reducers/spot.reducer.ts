@@ -17,24 +17,23 @@ const newState = (state, newData) => {
 
 /// Reducer function
 export function spotReducer(state: Spots = defaultState, action: Action) {
-  console.log(action.type, state);
     switch (action.type) {
         case SpotActions.TOGGLE_FAVORITE:
-            return newState(state, { 
-                // favorite: !state.favorite 
+            return newState(state, {
+                // favorite: !state.favorite
             });
         case SpotActions.RESET:
             return defaultState;
         case SpotActions.LOAD: {
-            return Object.assign({}, state, { loading: true }); 
-            } 
-        case SpotActions.LOAD_SUCCESS: { 
-            const spots = action.payload; 
+            return Object.assign({}, state, { loading: true });
+            }
+        case SpotActions.LOAD_SUCCESS: {
+            const spots = action.payload;
             console.log(spots);
-            return Object.assign({}, state ,{ loaded: true, loading: false, entities: spots }); 
-        } 
-        case SpotActions.LOAD_FAILURE: { 
-            return Object.assign({}, state ,{ loaded: true, loading: false, entities:[]}); 
+            return Object.assign({}, state , { loaded: true, loading: false, entities: spots });
+        }
+        case SpotActions.LOAD_FAILURE: {
+            return Object.assign({}, state , { loaded: true, loading: false, entities: []});
         }
 
          default:
