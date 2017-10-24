@@ -4,7 +4,7 @@ import {Response, Http, Headers, RequestOptions, Jsonp} from "@angular/http";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Spots } from '../app/models/spot.model';
+import { Spots } from '../app/models/spots.model';
 
 @Injectable()
 export class ForecastServiceService {
@@ -28,7 +28,7 @@ export class ForecastServiceService {
   private _baseUrl = 'http://api.spitcast.com/api';
 
   getCounties() {
-    return this.counties;
+    return Promise.resolve(this.counties);
   }
 
   getSpotss(county: string) {
@@ -39,11 +39,13 @@ export class ForecastServiceService {
   }
 
   loadSpots() {
+    return this.http.get(`${this._baseUrl}/spot/all`);
+
     // console.log('hi')
     // // const spot = {name: 'churches', id: '1', favorite: true};
     // // return Observable.mapTo(spot);
     // // return null
-    return this.http.get(`${this._baseUrl}/spot/all`)
+    // return this.http.get(`${this._baseUrl}/spot/all`)
     // .subscribe(data => {console.log(data); return data;})
     // .map(res => console.log(res));//res.json());
 
@@ -59,9 +61,6 @@ export class ForecastServiceService {
   }
 
   getForecast(spotId: number) {
-
-    return null
-    // console.log(spotId);
-    // return this.http.get(`${this._baseUrl}/spot/forecast/${spotId}`);
+    return this.http.get(`${this._baseUrl}/spot/forecast/${spotId}/`);
   }
 }

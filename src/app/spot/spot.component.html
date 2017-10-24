@@ -1,3 +1,18 @@
 <p>
   spot works!
 </p>
+{{this.spot | json}}
+
+<mat-card class="container">
+    
+<div class="row">
+  <div class="col-6 offset-3">
+    <div style="text-align:center">
+      <h1>
+        {{this.spot[0]['spot_name']}}
+      </h1>
+    </div>
+  </div>
+</div>
+
+</mat-card>

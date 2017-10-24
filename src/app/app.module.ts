@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { MatCardModule, MatSelectModule, MatFormFieldModule, MatTableModule } from '@angular/material';
+import { MatCardModule, MatSelectModule, MatFormFieldModule, MatTableModule, MatGridListModule } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -23,6 +23,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 import { ForecastServiceService } from './../services/forecast-service.service';
+import { CountyFilterPipe } from './county-filter.pipe';
 
 // import { spot } from './reducers/spot';
 
@@ -31,7 +32,8 @@ import { ForecastServiceService } from './../services/forecast-service.service';
     AppComponent,
     DashboardComponent,
     CountyComponent,
-    SpotComponent
+    SpotComponent,
+    CountyFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,7 @@ import { ForecastServiceService } from './../services/forecast-service.service';
     MatSelectModule,
     MatFormFieldModule,
     MatTableModule,
+    MatGridListModule,
     CdkTableModule,
     // StoreModule,
     StoreModule.forRoot({ spot: spotReducer }),

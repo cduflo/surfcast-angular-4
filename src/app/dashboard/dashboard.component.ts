@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { Spots } from '../models/spot.model';
+import { Spots } from '../models/spots.model';
 import * as SpotActions from '../actions/spot.actions';
 
 interface AppState {
@@ -50,7 +50,13 @@ export class DashboardComponent implements OnInit {
     //   }
     // );
 
-    this.loadSpots();
+    this.service.getCounties()
+    .then(counties => {
+      this.counties = counties;
+      this.countySelection = counties[0];
+      this.loadSpots();
+    })
+    .catch(err => console.log(err));
   }
 
   loadSpots() {
@@ -58,11 +64,16 @@ export class DashboardComponent implements OnInit {
     // this.service.loadSpots();
   }
 
-  goToCounty(county: any) {
-    console.log(county)
-    console.log(this.countySelection);
-    const link = ['/county', county];
-    // this.router.navigate(link);
+  toggleFavorite(entity) {
+    console.log(entity);
+    entity.favorite = !entity.favorite;
+  }
+
+  goToSpot(spot: string) {
+    console.log(spot)
+
+    const link = ['/spot', spot];
+    this.router.navigate(link);
   }
 
   toggle() {

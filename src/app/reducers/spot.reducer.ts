@@ -1,5 +1,5 @@
 import * as SpotActions from '../actions/spot.actions';
-import { Spots } from '../models/spot.model';
+import { Spots } from '../models/spots.model';
 
 export type Action = SpotActions.All;
 
@@ -26,8 +26,7 @@ export function spotReducer(state: Spots = defaultState, action: Action) {
         case SpotActions.RESET:
             return defaultState;
         case SpotActions.LOAD: {
-                const page = action.payload; 
-                return Object.assign({}, state, { loading: true }); 
+            return Object.assign({}, state, { loading: true }); 
             } 
         case SpotActions.LOAD_SUCCESS: { 
             const spots = action.payload; 

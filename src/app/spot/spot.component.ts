@@ -8,10 +8,16 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class SpotComponent implements OnInit {
 
+  spot: any;
+
   constructor(private route: ActivatedRoute) { }
   
     ngOnInit() {
       console.log(this.route.params);
+      this.route.data
+      .subscribe((data: { spot: any }) => {
+        this.spot = data.spot;
+      });
     }
   
 }

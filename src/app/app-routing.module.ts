@@ -1,3 +1,4 @@
+import { SpotDetailResolver } from './spot-detail-resolver.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -9,11 +10,17 @@ const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'county/:name', component: CountyComponent },
-  { path: 'spot/:id', component: SpotComponent }
+  { path: 'spot/:id',
+    component: SpotComponent,
+    resolve: {
+      spot: SpotDetailResolver
+    }
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [SpotDetailResolver]
 })
 export class AppRoutingModule { }

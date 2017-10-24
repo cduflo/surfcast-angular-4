@@ -10,14 +10,12 @@ export class ToggleFavorite implements Action {
   readonly type = TOGGLE_FAVORITE;
 
   constructor(public payload: any) {}
-  
 }
 
 export class Reset implements Action {
   readonly type = RESET;
 
   constructor(public payload: any) {}
-  
 }
 
 export class LoadSpotsAction implements Action {

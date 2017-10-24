@@ -1,39 +1,44 @@
-<!-- The content below is only a placeholder and can be replaced.
-
 <mat-card class="container">
-  <div class="row">
-    <div class="col-6 offset-3">
-      <div style="text-align:center">
-        <h1>
-          Welcome to:
-        </h1>
-        <img width="300" [src]="imagePath">
+        
+    <div class="row">
+      <div class="col-6 offset-3">
+        <div style="text-align:center">
+          <h1>
+            Welcome to:
+          </h1>
+          <img width="300" [src]="imagePath">
+        </div>
       </div>
     </div>
-  </div>
-    
-  <div class="row">
-    <div class="col-4 offset-4">
-      <mat-form-field>
-        <mat-select [(ngModel)]="countySelection" (ngModelChange)="goToCounty($event)">
-          <mat-option 
-            *ngFor="let county of this.counties"
-            [value]="county"
-            >
-            {{county}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      
+    <div class="row">
+      <div class="col-4 offset-4">
+          <div class="form-group">
+            <label for="countySelect">County</label>
+            <select [(ngModel)]="countySelection" (ngModelChange)="goToCounty($event)" class="form-control" id="exampleSelect1">
+              <option
+              *ngFor="let county of this.counties"
+              [value]="county"
+              >
+              {{county}}</option>
+            </select>
+          </div>
+      </div>
     </div>
-  </div>
+
 </mat-card>
 
-{{countySelection}} -->
-
-<div *ngIf="spot | async as p">
-  {{p.entities | json}}
-    <!-- <h2>{{ p.name }}</h2>
-    <h4>Votes: {{ p.favorite }}</h4>
-    <button (click)="toggle()">Favorite</button>
-    <button (click)="resetSpot()">Reset</button> -->
+<mat-card class="container">   
+  <div *ngIf="spot | async as p">
+    <mat-grid-list cols="4" rowHeight="4:1">
+        <mat-grid-tile
+          *ngFor="let entity of p.entities | countyFilter: countySelection"
+          (click)="goToSpot(entity['spot_id'])"
+          >
+          {{entity['spot_name']}}
+          <br>
+          {{entity.favorite}}
+        </mat-grid-tile>
+      </mat-grid-list>
   </div>
+</mat-card>
