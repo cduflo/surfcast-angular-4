@@ -1,4 +1,11 @@
+@import "variables";
+
 mat-grid-tile {
-    background: lightblue;
-    margin: 20px;
-  }
+  background: $primary;
+  margin: 20px;
+}
+
+.chartjs-render-monitor {
+  width: 100% !important;
+  height: 100% !important;
+}

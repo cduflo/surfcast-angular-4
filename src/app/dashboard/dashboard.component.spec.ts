@@ -5,7 +5,7 @@ import { CountyFilterPipe } from '../pipes/county-filter.pipe';
 import { StoreModule } from '@ngrx/store';
 import { ForecastServiceService } from '../services/forecast-service.service';
 import { HttpClientModule } from '@angular/common/http';
-import {RouterTestingModule} from '@angular/router/testing'
+import {RouterTestingModule} from '@angular/router/testing';
 
 import { spotReducer } from '../reducers/spot.reducer';
 

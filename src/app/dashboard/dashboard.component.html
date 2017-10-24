@@ -15,7 +15,7 @@
       <div class="col-4 offset-4">
           <div class="form-group">
             <label for="countySelect">County</label>
-            <select [(ngModel)]="countySelection" (ngModelChange)="goToCounty($event)" class="form-control" id="exampleSelect1">
+            <select [(ngModel)]="countySelection" class="form-control" id="exampleSelect1">
               <option
               *ngFor="let county of this.counties"
               [value]="county"

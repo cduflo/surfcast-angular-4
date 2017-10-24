@@ -22,6 +22,8 @@ import { CountyFilterPipe } from './pipes/county-filter.pipe';
 
 import { ForecastServiceService } from './services/forecast-service.service';
 
+import {ChartModule} from 'primeng/primeng';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,7 @@ import { ForecastServiceService } from './services/forecast-service.service';
     CountyFilterPipe
   ],
   imports: [
+    ChartModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -43,7 +46,7 @@ import { ForecastServiceService } from './services/forecast-service.service';
     MatGridListModule,
     StoreModule.forRoot({ spot: spotReducer }),
     StoreDevtoolsModule.instrument({
-      maxAge: 10 // number of states to retain
+      maxAge: 10
     }),
     EffectsModule.forRoot([SpotEffects]),
   ],

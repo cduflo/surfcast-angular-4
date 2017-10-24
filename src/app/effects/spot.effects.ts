@@ -22,5 +22,5 @@ export class SpotEffects {
     @Effect() loadSpots$ = this._actions.ofType(spots.LOAD)
     .switchMap(() => this._service.loadSpots()
     .map((spots) =>  new LoadSpotsSuccessAction(spots)))
-    .catch(() => Observable.of( new LoadSpotsFailedAction({}))); 
+    .catch(() => Observable.of( new LoadSpotsFailedAction({})));
 }

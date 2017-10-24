@@ -9,22 +9,35 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class SpotComponent implements OnInit {
 
   spot: any;
+  data: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {
+  }
 
-    ngOnInit() {
-      console.log(this.route.params);
-      this.route.data
-      .subscribe((data: { spot: any }) => {
-        this.spot = data.spot;
-        this.loadChart();
-      });
-    }
 
-    loadChart() {
-      // TODO: Map to proper data structure for chosen chart package
-        // const heightData = this.spot.map(value => [value.hour, value.size]);
-        // console.log(heightData);
-    }
+  ngOnInit() {
+    this.route.data
+    .subscribe((data: { spot: any }) => {
+      this.spot = data.spot;
+      this.loadChart();
+    });
+  }
+
+  loadChart() {
+    const hoursArray = this.spot.map(value => value.hour);
+    const heightData = this.spot.map(value => value.size);
+
+    this.data = {
+      labels: hoursArray,
+      datasets: [
+          {
+              label: 'Wave Height',
+              data: heightData,
+              fill: false,
+              borderColor: '#4bc0c0'
+          }
+      ]
+    };
+  }
 
 }
